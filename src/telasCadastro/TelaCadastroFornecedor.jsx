@@ -1,39 +1,38 @@
 import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import Pagina from "../templates/Pagina";
-import FormCadCliente from "./formularios/FormCadCliente";
-import TabelaClientes from "./tabelas/TabelaClientes";
+import FormCadFornecedor from "./formularios/FormCadFornecedor";
+import TabelaFornecedores from "./tabelas/TabelaFornecedores";
 import TelaMensagem from "./TelaMensagem";
 
-export default function TelaCadastroCliente(props) {
+export default function TelaCadastroFornecedor(props) {
   const [exibirFormulario, setExibirFormulario] = useState(false);
-  const [listaClientes, setListaClientes] = useState([]);  
+  const [listaFornecedors, setListaFornecedors] = useState([]);  
   const [mostrarMensagem, setMostrarMensagem] = useState(false);
   const [mensagem, setMensagem] = useState("");
   const [tipoMensagem, setTipoMensagem] = useState("");
-  const [clienteParaEdicao, setClienteParaEdicao] = useState({
-    cpf: "",
-    nome: "",
-    endereco: "",
-    numero: "",
-    bairro: "",
-    cidade: "",
-    uf: "SP",
-    cep: "",
+  const [fornecedorParaEdicao, setFornecedorParaEdicao] = useState({
+    nomeFornecedor:'',
+        telefone:'',
+        fax:'',
+        email:'',
+        cidade:'',
+        uf:'SP',
+        cod:'',
   });
   const [modoEdicao, setModoEdicao] = useState(false);
-  const [ordemClientes, setOrdemClientes] = useState("asc");
+  const [ordemFornecedors, setOrdemFornecedors] = useState("asc");
 
-  function alternarOrdemClientes() {
-    setOrdemClientes(ordemClientes === "asc" ? "desc" : "asc");
+  function alternarOrdemFornecedors() {
+    setOrdemFornecedors(ordemFornecedors === "asc" ? "desc" : "asc");
   }
 
-  function ordenarClientesPorNome() {
-    setListaClientes([...listaClientes].sort((a, b) => {
-      if (ordemClientes === "asc") {
-        return a.nome.localeCompare(b.nome);
+  function ordenarFornecedorsPorNome() {
+    setListaFornecedors([...listaFornecedors].sort((a, b) => {
+      if (ordemFornecedors === "asc") {
+        return a.nomeFornecedor.localeCompare(b.nomeFornecedor);
       } else {
-        return b.nome.localeCompare(a.nome);
+        return b.nomeFornecedor.localeCompare(a.nomeFornecedor);
       }
     }));
   }
@@ -54,18 +53,18 @@ export default function TelaCadastroCliente(props) {
           <Button
             type="button"
             onClick={() => {
-              ordenarClientesPorNome();
+              ordenarFornecedorsPorNome();
             }}
           >
             Ordenar por Nome
           </Button>
           {exibirFormulario ? (
-            <FormCadCliente
+            <FormCadFornecedor
               exibirFormulario={setExibirFormulario}
-              listaClientes={listaClientes}
-              setListaClientes={setListaClientes}
-              clienteParaEdicao={clienteParaEdicao}
-              setClienteParaEdicao={setClienteParaEdicao}
+              listaFornecedors={listaFornecedors}
+              setListaFornecedors={setListaFornecedors}
+              FornecedorParaEdicao={fornecedorParaEdicao}
+              setFornecedorParaEdicao={setFornecedorParaEdicao}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}
               setMostrarMensagem={setMostrarMensagem}
@@ -73,12 +72,12 @@ export default function TelaCadastroCliente(props) {
               setTipoMensagem={setTipoMensagem}
             />
           ) : (
-            <TabelaClientes
+            <TabelaFornecedores
               exibirFormulario={setExibirFormulario}
-              listaClientes={listaClientes}
-              setListaClientes={setListaClientes}
-              clienteParaEdicao={clienteParaEdicao}
-              setClienteParaEdicao={setClienteParaEdicao}
+              listaFornecedors={listaFornecedors}
+              setListaFornecedors={setListaFornecedors}
+              FornecedorParaEdicao={fornecedorParaEdicao}
+              setFornecedorParaEdicao={setFornecedorParaEdicao}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}
             />

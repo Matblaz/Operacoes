@@ -10,7 +10,6 @@ export default function TabelaClientes(props) {
     }
 
     function editarCliente(cliente){
-
         props.setClienteParaEdicao(cliente);
         props.setModoEdicao(true);
         props.exibirFormulario(true);
@@ -20,11 +19,13 @@ export default function TabelaClientes(props) {
 
     return (
         <Container>
+            <br />
             <Button type="button" onClick={() => {
                 props.exibirFormulario(true);
             }}>Novo Cliente</Button>
             <Table striped bordered hover>
                 <thead>
+                    <br />
                     <tr>
                         <th>CPF</th>
                         <th>Nome</th>
@@ -32,7 +33,7 @@ export default function TabelaClientes(props) {
                         <th>Bairro</th>
                         <th>Cidade/UF</th>
                         <th>CEP</th>
-                        <th>Ações</th>
+                        <th>Opções</th>
                     </tr>
                 </thead>
                 <tbody>
