@@ -7,8 +7,8 @@ export default function Tela404(props){
         <Container>
             <Pagina>
                 <Alert variant="danger">
-                    O sistema não oferece acesso a essa página.
-                    Utilize o Menu para acessar as opções válidas. 
+                    O sistema não oferece acesso a essa página,
+                    Utilize o Menu para acessar as opções válidas.
                 </Alert> 
             </Pagina>
         </Container>
